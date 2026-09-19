@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PMP Technologies — Engineering Studio &amp; Tech Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#2563eb;
+    --blue-dark:#004ac6;
+    --teal:#00687a;
+    --teal-dark:#006172;
+    --ink:#151b2a;
+    --body:#434655;
+    --muted:#737686;
+    --faint:#c3c6d7;
+    --bg:#f9f9ff;
+    --bg-alt:#f1f3ff;
+    --card-blue:#e9edff;
+    --card-blue2:#e2e8fc;
+    --card-cyan:#acedff;
+    --dark:#2a3040;
+    --dark2:#1b2234;
+    --border:#e9edff;
+    --radius:12px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    color:var(--body);
+    background:var(--bg);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:'Manrope',sans-serif;color:var(--ink);}
+  img{max-width:100%;display:block;}
+  a{text-decoration:none;color:inherit;}
+  button{font-family:inherit;cursor:pointer;border:none;}
+  ul{list-style:none;}
+  .wrap{max-width:1280px;margin:0 auto;padding:0 48px;}
+  .eyebrow{
+    font-size:11px;font-weight:600;letter-spacing:0.55px;text-transform:uppercase;color:var(--blue-dark);
+  }
+  .section{padding:96px 0;}
+  .section-head{max-width:672px;margin-bottom:48px;display:flex;flex-direction:column;gap:12px;}
+  .section-head h2{font-size:40px;font-weight:700;letter-spacing:-1px;line-height:1.2;}
+  .section-head p{font-size:18px;color:var(--body);}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:14px 24px;border-radius:8px;font-weight:600;font-size:16px;
+    letter-spacing:-0.08px;white-space:nowrap;transition:transform .15s ease, opacity .15s ease;
+  }
+  .btn:hover{opacity:0.92;}
+  .btn-primary{background:var(--blue);color:#fff;box-shadow:0 1px 1px rgba(0,0,0,.05);}
+  .btn-secondary{background:var(--card-blue);color:var(--ink);}
+  .btn-cyan{background:var(--card-cyan);color:var(--teal-dark);}
+  .btn-navy{background:var(--blue-dark);color:#fff;}
+  .btn-outline{background:rgba(255,255,255,.5);border:1px solid var(--faint);color:var(--ink);border-radius:9999px;padding:9px 17px;}
+  .btn-ghost{background:rgba(255,255,255,.1);color:#edf0ff;}
+  .icon{flex-shrink:0;}
+
+  /* HEADER */
+  header.site{
+    position:sticky;top:0;z-index:100;background:rgba(255,255,255,.9);backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--border);box-shadow:0 1px 2px rgba(0,0,0,.05);
+  }
+  header.site .wrap{
+    height:80px;display:flex;align-items:center;justify-content:space-between;gap:24px;
+  }
+  .brand{display:flex;align-items:center;gap:12px;flex-shrink:0;}
+  .brand-badge{
+    width:40px;height:40px;border-radius:9999px;background:linear-gradient(135deg,#004ac6,#00687a);
+    display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Manrope',sans-serif;font-weight:800;font-size:13px;
+    box-shadow:0 1px 2px rgba(0,0,0,.05);
+  }
+  .brand-name{font-family:'Manrope',sans-serif;font-weight:700;font-size:20px;letter-spacing:-0.5px;color:var(--ink);}
+  nav.main-nav{display:flex;align-items:center;gap:4px;}
+  nav.main-nav a{
+    font-size:15px;color:var(--body);padding:8px 12px;border-radius:8px;
+  }
+  nav.main-nav a.active{background:var(--card-blue2);color:var(--blue-dark);}
+  .header-actions{display:flex;align-items:center;gap:12px;flex-shrink:0;}
+  .avatar-dot{
+    width:32px;height:32px;border-radius:9999px;background:var(--blue-dark);
+    display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;
+  }
+  .nav-toggle{display:none;background:none;border:none;flex-direction:column;gap:5px;padding:8px;}
+  .nav-toggle span{width:24px;height:2px;background:var(--ink);border-radius:2px;}
+
+  /* HERO */
+  .hero{background:var(--bg);padding:80px 0;}
+  .hero .wrap{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;}
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:10px;background:var(--card-blue2);
+    padding:6px 14px;border-radius:9999px;margin-bottom:24px;
+  }
+  .hero-badge .dot{width:8px;height:8px;border-radius:9999px;background:var(--teal);}
+  .hero-badge span{font-size:11px;font-weight:600;letter-spacing:.55px;text-transform:uppercase;color:var(--teal);}
+  .hero h1{font-size:56px;font-weight:800;letter-spacing:-1.4px;line-height:1.15;margin-bottom:24px;}
+  .hero h1 .accent{color:var(--blue);}
+  .hero-sub{font-size:18px;max-width:576px;margin-bottom:32px;}
+  .hero-ctas{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:32px;}
+  .trust-row{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;}
+  .trust-item{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--body);}
+  .trust-sep{color:var(--faint);}
+  .terminal{
+    background:var(--dark);border-radius:var(--radius);padding:20px;
+    box-shadow:0 20px 25px -5px rgba(0,0,0,.1),0 8px 10px -6px rgba(0,0,0,.1);
+    position:relative;
+  }
+  .terminal-header{
+    display:flex;align-items:center;justify-content:space-between;
+    border-bottom:1px solid rgba(115,118,134,.2);padding-bottom:17px;margin-bottom:16px;
+  }
+  .terminal-dots{display:flex;align-items:center;gap:8px;}
+  .terminal-dots i{width:12px;height:12px;border-radius:9999px;display:inline-block;}
+  .terminal-dots .r{background:#ef4444;}
+  .terminal-dots .y{background:#eab308;}
+  .terminal-dots .g{background:#22c55e;}
+  .terminal-title{font-size:11px;letter-spacing:.88px;color:var(--faint);margin-left:8px;}
+  .terminal-tag{background:rgba(255,255,255,.1);color:#4cd7f6;font-size:11px;letter-spacing:.88px;padding:2px 8px;border-radius:4px;}
+  .code{font-size:13px;line-height:20px;color:#c3c6d7;overflow-x:auto;white-space:pre;margin-bottom:16px;}
+  .code .kw{color:#4cd7f6;}
+  .code .str{color:#b4c5ff;}
+  .code .fn{color:#edf0ff;}
+  .code .cm{color:rgba(195,198,215,.6);}
+  .code .ok{color:#4ade80;}
+  .code .fname{color:#006172;}
+  .float-cards{display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap;}
+  .float-card{
+    flex:1;min-width:180px;background:var(--dark2);border-radius:8px;padding:12px;
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+    box-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);
+  }
+  .float-card .fc-title{font-size:13px;color:#edf0ff;}
+  .float-card .fc-sub{font-size:11px;letter-spacing:.88px;color:#4cd7f6;}
+  .float-card .dot-ok{width:8px;height:8px;border-radius:9999px;background:#22c55e;flex-shrink:0;}
+  .pipeline{
+    display:flex;align-items:center;justify-content:space-between;
+    border-top:1px solid rgba(115,118,134,.2);padding-top:13px;flex-wrap:wrap;gap:8px;
+  }
+  .pipeline .step{display:flex;align-items:center;gap:6px;font-size:11px;letter-spacing:.88px;color:#b4c5ff;white-space:nowrap;}
+  .pipeline .arrow{color:rgba(195,198,215,.4);}
+
+  /* STATS */
+  .stats{background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+  .stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;padding-top:32px;padding-bottom:32px;}
+  .stat h3{font-size:40px;font-weight:800;color:var(--ink);letter-spacing:-1px;}
+  .stat .label{font-size:16px;font-weight:600;color:var(--ink);margin-top:4px;}
+  .stat .desc{font-size:14px;color:var(--muted);margin-top:2px;}
+  .stat.rating h3{display:flex;align-items:baseline;gap:4px;}
+  .stat.rating h3 span{color:#eab308;font-size:28px;}
+
+  /* AUDIENCE */
+  .audience-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+  .aud-card{background:#fff;border-radius:var(--radius);padding:40px;box-shadow:0 1px 1px rgba(0,0,0,.05);display:flex;flex-direction:column;justify-content:space-between;}
+  .aud-icon{width:56px;height:56px;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:24px;}
+  .aud-icon.blue{background:var(--card-blue);color:var(--blue-dark);}
+  .aud-icon.cyan{background:var(--card-blue2);color:var(--teal);}
+  .aud-eyebrow{font-size:11px;font-weight:600;letter-spacing:.88px;text-transform:uppercase;margin-bottom:8px;}
+  .aud-eyebrow.blue{color:var(--blue-dark);}
+  .aud-eyebrow.teal{color:var(--teal);}
+  .aud-card h3{font-size:28px;font-weight:600;letter-spacing:-.42px;margin-bottom:8px;}
+  .aud-card p.desc{font-size:15px;margin-bottom:16px;}
+  .aud-list{display:flex;flex-direction:column;gap:10px;margin-bottom:24px;}
+  .aud-list li{display:flex;align-items:center;gap:12px;font-size:15px;color:var(--ink);}
+  .check{color:var(--blue-dark);flex-shrink:0;}
+  .aud-card.students .check{color:var(--teal);}
+
+  /* SERVICES */
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .service-card{background:#fff;border-radius:var(--radius);padding:32px;box-shadow:0 1px 2px rgba(0,0,0,.05);display:flex;flex-direction:column;gap:16px;}
+  .service-card.wide{grid-column:span 2;}
+  .service-top{display:flex;align-items:center;justify-content:space-between;}
+  .service-num{font-size:14px;color:var(--faint);font-weight:600;}
+  .service-icon{color:var(--blue);}
+  .service-card h3{font-size:20px;font-weight:600;}
+  .service-card p{font-size:15px;}
+  .service-link{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--blue-dark);margin-top:auto;}
+
+  /* PROCESS */
+  .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+  .process-card .num-badge{
+    width:40px;height:40px;border-radius:8px;background:var(--card-blue);color:var(--blue-dark);
+    display:flex;align-items:center;justify-content:center;font-family:'Manrope',sans-serif;font-weight:700;font-size:18px;margin-bottom:24px;
+  }
+  .process-card h3{font-size:20px;font-weight:600;margin-bottom:12px;}
+  .process-card p{font-size:15px;}
+
+  /* STUDENT TRAINING DARK */
+  .academy{background:var(--dark);color:#edf0ff;}
+  .academy .eyebrow{color:#4cd7f6;}
+  .academy .section-head h2{color:#edf0ff;}
+  .academy .section-head p{color:#c3c6d7;}
+  .milestone-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-bottom:32px;}
+  .milestone-card{background:var(--dark2);border-radius:var(--radius);padding:24px;box-shadow:0 4px 6px -1px rgba(0,0,0,.1);}
+  .milestone-icon{width:40px;height:40px;border-radius:8px;background:rgba(76,215,246,.12);color:#4cd7f6;display:flex;align-items:center;justify-content:center;margin-bottom:24px;}
+  .milestone-card h3{color:#edf0ff;font-size:20px;font-weight:600;margin-bottom:12px;}
+  .milestone-card p{color:#c3c6d7;font-size:15px;}
+  .flow-bar{
+    background:var(--dark2);border-radius:var(--radius);padding:24px 24px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+    box-shadow:0 4px 6px -1px rgba(0,0,0,.1);
+  }
+  .flow-left{display:flex;align-items:center;gap:16px;}
+  .flow-left .fl-icon{color:#4cd7f6;}
+  .flow-left h4{color:#edf0ff;font-size:18px;font-weight:600;}
+  .flow-left p{color:#c3c6d7;font-size:13px;}
+
+  /* TECH STACK */
+  .chips{display:flex;flex-wrap:wrap;gap:12px;}
+  .chip{
+    background:#fff;border-radius:8px;padding:10px 16px;display:flex;align-items:center;gap:8px;
+    box-shadow:0 1px 1px rgba(0,0,0,.05);font-size:13px;color:var(--ink);
+  }
+  .chip .ci{color:var(--blue);}
+
+  /* WHY PMP */
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .why-card{background:#fff;border-radius:var(--radius);padding:24px;box-shadow:0 1px 1px rgba(0,0,0,.05);}
+  .why-card .wi{color:var(--blue);margin-bottom:16px;}
+  .why-card h3{font-size:20px;font-weight:600;margin-bottom:12px;}
+  .why-card p{font-size:15px;}
+
+  /* PROJECT SHOWCASE (client) */
+  .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .proj-card{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.05);}
+  .proj-thumb{height:192px;background:linear-gradient(135deg,#e2e8fc,#e9edff);padding:24px;display:flex;flex-direction:column;justify-content:center;gap:12px;}
+  .proj-thumb .dots{display:flex;gap:6px;}
+  .proj-thumb .dots i{width:8px;height:8px;border-radius:9999px;background:#c3c6d7;}
+  .proj-thumb .bar{background:rgba(255,255,255,.7);border-radius:6px;height:16px;width:70%;}
+  .proj-thumb .block{background:rgba(255,255,255,.5);border-radius:8px;height:64px;}
+  .proj-body{padding:24px;}
+  .proj-tag{font-size:11px;font-weight:600;letter-spacing:.88px;text-transform:uppercase;color:var(--blue-dark);margin-bottom:8px;}
+  .proj-body h3{font-size:20px;font-weight:600;margin-bottom:10px;}
+  .proj-body p{font-size:14px;margin-bottom:16px;}
+  .proj-foot{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border);padding-top:16px;gap:8px;flex-wrap:wrap;}
+  .proj-stack{font-size:12px;color:var(--muted);}
+  .proj-link{font-size:13px;font-weight:600;color:var(--blue-dark);display:flex;align-items:center;gap:4px;white-space:nowrap;}
+
+  /* STUDENT SHOWCASE */
+  .stu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+  .stu-card{background:#fff;border-radius:var(--radius);padding:24px;box-shadow:0 1px 2px rgba(0,0,0,.05);}
+  .stu-tag{display:inline-block;background:var(--card-blue2);color:var(--blue-dark);font-size:12px;font-weight:600;padding:4px 10px;border-radius:9999px;margin-bottom:12px;}
+  .stu-card h3{font-size:18px;font-weight:600;margin-bottom:8px;}
+  .stu-card p{font-size:14px;margin-bottom:16px;}
+  .stu-stack{font-size:12px;color:var(--muted);border-top:1px solid var(--border);padding-top:12px;}
+
+  /* CONTACT */
+  .contact-grid{display:grid;grid-template-columns:5fr 7fr;gap:48px;align-items:start;}
+  .contact-left h2{font-size:40px;font-weight:700;letter-spacing:-1px;margin-bottom:12px;}
+  .contact-left > p{font-size:18px;margin-bottom:8px;}
+  .contact-points{display:flex;flex-direction:column;gap:12px;margin:24px 0;}
+  .contact-points li{display:flex;align-items:center;gap:12px;font-size:15px;color:var(--ink);}
+  .contact-info{display:flex;flex-direction:column;gap:16px;margin-top:24px;}
+  .ci-row{display:flex;align-items:center;gap:12px;}
+  .ci-badge{width:40px;height:40px;border-radius:8px;background:var(--card-blue);color:var(--blue-dark);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .ci-label{font-size:11px;font-weight:600;letter-spacing:.88px;color:var(--muted);}
+  .ci-value{font-size:16px;font-weight:600;color:var(--ink);}
+  .contact-form-card{background:#fff;border-radius:var(--radius);padding:40px;box-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);}
+  .form-row{display:flex;gap:24px;margin-bottom:24px;flex-wrap:wrap;}
+  .form-group{flex:1;min-width:200px;display:flex;flex-direction:column;gap:8px;}
+  .form-group label{font-size:13px;color:var(--ink);}
+  .form-group input{
+    background:var(--bg-alt);border:1px solid transparent;border-radius:8px;padding:12.5px 16px;
+    font-size:15px;color:var(--ink);font-family:inherit;
+  }
+  .form-group input:focus{outline:none;border-color:var(--blue);background:#fff;}
+  .form-submit{width:100%;justify-content:center;margin-bottom:16px;}
+  .form-note{font-size:13px;color:var(--muted);text-align:center;}
+  #form-status{font-size:14px;text-align:center;margin-top:8px;min-height:20px;}
+  #form-status.success{color:#16a34a;}
+  #form-status.error{color:#dc2626;}
+
+  /* CONSULTATION BANNER */
+  .consult-banner{
+    background:var(--dark);border-radius:var(--radius);padding:40px;
+    display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+  }
+  .consult-banner h3{color:#edf0ff;font-size:28px;font-weight:600;letter-spacing:-.7px;margin-bottom:8px;}
+  .consult-banner p{color:#c3c6d7;font-size:15px;}
+  .consult-ctas{display:flex;gap:16px;flex-wrap:wrap;}
+
+  /* REVIEWS */
+  .review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .review-card{background:#fff;border-radius:var(--radius);padding:24px;box-shadow:0 1px 2px rgba(0,0,0,.05);}
+  .review-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+  .review-tag{background:var(--card-blue2);color:var(--blue-dark);font-size:12px;font-weight:600;padding:4px 10px;border-radius:9999px;}
+  .review-tag.student{background:#dcfce7;color:#15803d;}
+  .stars{color:#eab308;font-size:14px;letter-spacing:1px;}
+  .review-quote{font-size:15px;color:var(--ink);margin-bottom:24px;line-height:1.6;}
+  .review-person{display:flex;align-items:center;gap:12px;}
+  .review-avatar{width:40px;height:40px;border-radius:9999px;background:var(--card-blue);color:var(--blue-dark);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;}
+  .review-name{font-size:14px;font-weight:600;color:var(--ink);}
+  .review-role{font-size:13px;color:var(--muted);}
+
+  /* FAQ */
+  .faq{background:var(--bg-alt);}
+  .faq-columns{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+  .faq-col h3{display:flex;align-items:center;gap:8px;font-size:18px;font-weight:600;letter-spacing:-.18px;margin-bottom:16px;}
+  .faq-col h3 .fi{color:var(--blue);}
+  .faq-item{background:#fff;border-radius:8px;box-shadow:0 1px 2px rgba(0,0,0,.05);margin-bottom:16px;overflow:hidden;}
+  .faq-q{
+    width:100%;background:none;display:flex;align-items:center;justify-content:space-between;
+    padding:20px;font-size:16px;font-weight:600;letter-spacing:-.08px;color:var(--ink);text-align:left;
+  }
+  .faq-q .chev{transition:transform .2s ease;color:var(--muted);flex-shrink:0;margin-left:12px;}
+  .faq-item.open .chev{transform:rotate(180deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease;}
+  .faq-a-inner{padding:0 20px 20px;font-size:14px;color:var(--body);}
+  .faq-item.open .faq-a{max-height:300px;}
+
+  /* FINAL CTA */
+  .final-cta-box{
+    background:var(--card-blue2);border-radius:16px;padding:64px 48px;text-align:center;
+    display:flex;flex-direction:column;align-items:center;gap:24px;
+  }
+  .final-cta-box h2{font-size:56px;font-weight:800;letter-spacing:-1.68px;line-height:1.15;max-width:700px;}
+  .final-cta-box > p{font-size:18px;max-width:576px;}
+  .final-ctas{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;}
+
+  /* FOOTER */
+  footer.site{background:var(--dark);color:#c3c6d7;padding:64px 0 48px;}
+  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;border-bottom:1px solid rgba(115,118,134,.2);padding-bottom:48px;}
+  .footer-brand p{font-size:15px;margin:16px 0;}
+  .footer-col h4{color:#edf0ff;font-size:16px;font-weight:600;letter-spacing:.4px;margin-bottom:16px;}
+  .footer-col li{margin-bottom:10px;font-size:13px;}
+  .footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:32px;flex-wrap:wrap;gap:16px;}
+  .footer-bottom .legal{display:flex;gap:24px;font-size:13px;}
+  .footer-social{display:flex;gap:16px;}
+  .footer-social a{color:#c3c6d7;}
+
+  /* RESPONSIVE */
+  @media (max-width:1024px){
+    .wrap{padding:0 32px;}
+    .hero .wrap{grid-template-columns:1fr;}
+    .stats .wrap{grid-template-columns:repeat(2,1fr);}
+    .audience-grid{grid-template-columns:1fr;}
+    .services-grid{grid-template-columns:repeat(2,1fr);}
+    .service-card.wide{grid-column:span 2;}
+    .process-grid{grid-template-columns:repeat(2,1fr);}
+    .milestone-grid{grid-template-columns:repeat(2,1fr);}
+    .why-grid{grid-template-columns:repeat(2,1fr);}
+    .proj-grid{grid-template-columns:repeat(2,1fr);}
+    .stu-grid{grid-template-columns:repeat(2,1fr);}
+    .contact-grid{grid-template-columns:1fr;}
+    .faq-columns{grid-template-columns:1fr;}
+    .review-grid{grid-template-columns:repeat(2,1fr);}
+    .final-cta-box h2{font-size:42px;}
+    nav.main-nav{display:none;}
+    .nav-toggle{display:flex;}
+  }
+  @media (max-width:640px){
+    .wrap{padding:0 20px;}
+    .section{padding:64px 0;}
+    .section-head h2{font-size:30px;}
+    .hero h1{font-size:36px;letter-spacing:-1px;}
+    .hero-sub{font-size:16px;}
+    .stats .wrap{grid-template-columns:1fr 1fr;gap:24px;}
+    .services-grid{grid-template-columns:1fr;}
+    .service-card.wide{grid-column:span 1;}
+    .process-grid{grid-template-columns:1fr;}
+    .milestone-grid{grid-template-columns:1fr;}
+    .why-grid{grid-template-columns:1fr;}
+    .proj-grid{grid-template-columns:1fr;}
+    .stu-grid{grid-template-columns:1fr;}
+    .review-grid{grid-template-columns:1fr;}
+    .consult-banner{flex-direction:column;align-items:flex-start;text-align:left;}
+    .final-cta-box{padding:40px 24px;}
+    .final-cta-box h2{font-size:30px;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    .footer-bottom{flex-direction:column;align-items:flex-start;}
+    .header-actions .btn{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <img src="logo1.jpeg" alt="nature"
+    height="40px" width ="40px"/>
+      <span class="brand-name">PMP Technologies</span>
+    </div>
+    <nav class="main-nav">
+      <a href="#home" class="active">Home</a>
+      <a href="#services">Services</a>
+      <a href="#academy">Training</a>
+      <a href="#process">Process</a>
+      <a href="#projects">Projects</a>
+      <a href="#reviews">Testimonials</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="header-actions">
+      <a href="#academy" class="btn-outline">Explore Training</a>
+      <a href="#contact" class="btn btn-primary">Start a Project →</a>
+      <div class="avatar-dot">◎</div>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="wrap">
+    <div>
+      <div class="hero-badge"><span class="dot"></span><span>ENGINEERING STUDIO &amp; TECH ACADEMY</span></div>
+      <h1>We Build Digital Products.<br>We Build <span class="accent">Future-Ready Skills.</span></h1>
+      <p class="hero-sub">PMP Technologies helps businesses turn ideas into reliable digital products while helping students gain practical technology skills through hands-on, project-based learning.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">Start a Project
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#academy" class="btn btn-secondary">Explore Training
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </a>
+      </div>
+      <div class="trust-row">
+        <div class="trust-item">
+          <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue-dark)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+          Businesses &amp; Startups
+        </div>
+        <span class="trust-sep">•</span>
+        <div class="trust-item">
+          <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue-dark)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+          Aspiring Developers &amp; Students
+        </div>
+        <span class="trust-sep">•</span>
+        <div class="trust-item">
+          <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue-dark)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+          Production-Grade Architecture
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="terminal">
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <i class="r"></i><i class="y"></i><i class="g"></i>
+            <span class="terminal-title">pmp-engine-core :: main*</span>
+          </div>
+          <span class="terminal-tag">BUILD → LEARN → LAUNCH</span>
+        </div>
+        <div class="code"><span class="kw">import</span> { ProductEngine, AcademyCohort } <span class="kw">from</span> <span class="str">'@pmp/technologies'</span>;
+<span class="cm">// Automated deployment pipeline &amp; skill milestone</span>
+<span class="kw">export const</span> <span class="fname">deployDigitalSolution</span> = <span class="kw">async</span> (clientSpec) => {
+  const artifact = <span class="kw">await</span> ProductEngine.<span class="fn">synthesize</span>(clientSpec);
+  <span class="ok">✓ Architecture Validated: Enterprise Node v20.x</span>
+  return artifact.<span class="fn">releaseToProduction</span>({ status: <span class="str">'ACTIVE_STABLE'</span> });
+};</div>
+        <div class="float-cards">
+          <div class="float-card">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <svg width="18" height="14" viewBox="0 0 24 24" fill="none" stroke="#4cd7f6" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              <div><div class="fc-title">Web App Delivered</div><div class="fc-sub">99.98% Uptime SLA</div></div>
+            </div>
+            <div class="dot-ok"></div>
+          </div>
+          <div class="float-card">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <svg width="18" height="15" viewBox="0 0 24 24" fill="none" stroke="#b4c5ff" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              <div><div class="fc-title">Cohort Project Completed</div><div class="fc-sub">Portfolio Certified</div></div>
+            </div>
+            <svg width="17" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+        </div>
+        <div class="pipeline">
+          <div class="step"><svg width="13" height="7" viewBox="0 0 24 12" fill="none" stroke="#4cd7f6" stroke-width="2"><circle cx="4" cy="6" r="3"/><circle cx="20" cy="6" r="3"/><path d="M7 6h10"/></svg>Git Commit</div>
+          <span class="arrow">→</span>
+          <div class="step"><svg width="13" height="11" viewBox="0 0 24 20" fill="none" stroke="#b4c5ff" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Unit Test Pass</div>
+          <span class="arrow">→</span>
+          <div class="step"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#eeefff" stroke-width="2"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg>Cloud Deploy</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="wrap">
+    <div class="stat">
+      <h3>50+</h3>
+      <div class="label">Projects Delivered</div>
+      <div class="desc">Production builds for Startups &amp; SMEs</div>
+    </div>
+    <div class="stat">
+      <h3>200+</h3>
+      <div class="label">Students Trained</div>
+      <div class="desc">Practical, industry-ready curriculum</div>
+    </div>
+    <div class="stat">
+      <h3>15+</h3>
+      <div class="label">Technologies Covered</div>
+      <div class="desc">Full stack, cloud &amp; modern tooling</div>
+    </div>
+    <div class="stat rating">
+      <h3>4.9 <span>★</span></h3>
+      <div class="label">Client &amp; Student Rating</div>
+      <div class="desc">Consistently high satisfaction</div>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIENCE -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">DUAL PATHWAY ARCHITECTURE</span>
+      <h2>What Are You Looking to Build?</h2>
+      <p>Whether you represent an enterprise scaling digital presence or an ambitious learner preparing for a technology career, we have a focused path for you.</p>
+    </div>
+    <div class="audience-grid">
+      <div class="aud-card business">
+        <div>
+          <div class="aud-icon blue">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 00-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+          </div>
+          <span class="aud-eyebrow blue">FOR BUSINESSES &amp; ORGANIZATIONS</span>
+          <h3>Build Your Digital Product</h3>
+          <p class="desc">From high-conversion websites to robust custom software, we help teams turn product requirements into secure, maintainable digital assets.</p>
+          <ul class="aud-list">
+            <li><svg class="check" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>Business Websites &amp; Portals</li>
+            <li><svg class="check" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>Cross-Platform Mobile Apps</li>
+            <li><svg class="check" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>Custom Cloud Web Applications</li>
+            <li><svg class="check" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>Custom Business Software &amp; APIs</li>
+          </ul>
+        </div>
+        <a href="#contact" class="btn btn-navy">Discuss Your Project
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="aud-card students">
+        <div>
+          <div class="aud-icon cyan">
+            <svg width="26" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <span class="aud-eyebrow teal">FOR STUDENTS &amp; ASPIRANTS</span>
+          <h3>Build Your Technology Skills</h3>
+          <p class="desc">Master modern development through rigorous practice, guided architecture tasks, and genuine deployment pipelines that stand out on resumes.</p>
+          <ul class="aud-list">
+            <li><svg class="check" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>Full Stack Web Development</li>
+            <li><svg class="check" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>Modern Python &amp; JavaScript Engineering</li>
+            <li><svg class="check" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>Real-World Capstone Projects</li>
+            <li><svg class="check" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>Git, GitHub &amp; Deployment Portfolios</li>
+          </ul>
+        </div>
+        <a href="#academy" class="btn btn-cyan">Explore Training
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services" style="background:#fff;">
+  <div class="wrap">
+    <div class="section-head" style="max-width:672px;">
+      <span class="eyebrow">ENGINEERING SOLUTIONS</span>
+      <h2>Digital Solutions That Help You Move Forward</h2>
+      <p>From your first idea to a working product, PMP Technologies helps you plan, build, and continually enhance your digital infrastructure.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-top"><span class="service-num">01</span>
+          <svg class="service-icon" width="22" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v12H4z"/><path d="M2 20h20M9 9l3-3 3 3M9 13l3 3 3-3"/></svg>
+        </div>
+        <h3>Website Development</h3>
+        <p>Modern, responsive websites designed around your business goals, target audiences, and brand identity with sub-second page loads.</p>
+        <span class="service-link">Learn more
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </span>
+      </div>
+      <div class="service-card">
+        <div class="service-top"><span class="service-num">02</span>
+          <svg class="service-icon" width="17" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+        </div>
+        <h3>Mobile App Development</h3>
+        <p>User-focused mobile applications built for iOS and Android, handling complex offline scenarios and device API integrations.</p>
+        <span class="service-link">Learn more
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </span>
+      </div>
+      <div class="service-card">
+        <div class="service-top"><span class="service-num">03</span>
+          <svg class="service-icon" width="23" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20 15 15 0 010-20z"/></svg>
+        </div>
+        <h3>Web Applications</h3>
+        <p>Scalable, cloud-native web applications with role-based access, automated workflows, and complex transactional engines.</p>
+        <span class="service-link">Learn more
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </span>
+      </div>
+      <div class="service-card">
+        <div class="service-top"><span class="service-num">04</span>
+          <svg class="service-icon" width="25" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <h3>Custom Software</h3>
+        <p>Tailored software systems engineered for bespoke operations, internal team tooling, CRM pipelines, and proprietary algorithms.</p>
+        <span class="service-link">Learn more
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </span>
+      </div>
+      <div class="service-card wide">
+        <div class="service-top"><span class="service-num">05</span>
+          <svg class="service-icon" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+        </div>
+        <h3>UI/UX &amp; Digital Product Design</h3>
+        <p>Intuitive, accessibility-compliant user interfaces that turn complex tasks into effortless user flows, supported by comprehensive design systems.</p>
+        <span class="service-link">Learn more
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEVELOPMENT PROCESS -->
+<section class="section" id="process">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">METHODOLOGY</span>
+      <h2>From Idea to Product</h2>
+      <p>A structured, transparent lifecycle that keeps your requirements on budget, on schedule, and aligned with market needs.</p>
+    </div>
+    <div class="process-grid">
+      <div class="process-card"><div class="num-badge">01</div><h3>Discover</h3><p>Understand your business model, end-users, functional requirements, and measurable launch objectives.</p></div>
+      <div class="process-card"><div class="num-badge">02</div><h3>Plan</h3><p>Define system architecture, UI mockups, cloud stack choices, milestone deliverables, and security benchmarks.</p></div>
+      <div class="process-card"><div class="num-badge">03</div><h3>Build</h3><p>Execute agile development sprints with code reviews, continuous integration, and frequent stakeholder demos.</p></div>
+      <div class="process-card"><div class="num-badge">04</div><h3>Launch &amp; Improve</h3><p>Rigorous automated QA, multi-region cloud deployment, post-launch performance monitoring, and iterative enhancements.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- STUDENT TRAINING (DARK) -->
+<section class="section academy" id="academy">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">SKILL ACADEMY</span>
+      <h2>Don't Just Learn. Build.</h2>
+      <p>Learn technology by actually using it. Our training focuses on practical concepts, hands-on exercises, real-world projects, and skills students can genuinely demonstrate.</p>
+    </div>
+    <div class="milestone-grid">
+      <div class="milestone-card"><div class="milestone-icon"><svg width="22" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10L12 5 2 10l10 5 10-5z"/></svg></div><h3>Learn</h3><p>Understand core logic, data structures, and architectural standards directly from active senior software developers.</p></div>
+      <div class="milestone-card"><div class="milestone-icon"><svg width="20" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><h3>Practice</h3><p>Apply concepts immediately through daily coding labs, bug-hunting drills, and guided technical problem-solving tasks.</p></div>
+      <div class="milestone-card"><div class="milestone-icon"><svg width="18" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l9 4-9 4-9-4 9-4z"/><path d="M3 6v12l9 4 9-4V6"/></svg></div><h3>Build</h3><p>Construct full-stack web applications with authentication, live databases, third-party APIs, and deployment pipelines.</p></div>
+      <div class="milestone-card"><div class="milestone-icon"><svg width="16" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4.5L18 20l-6-4-6 4 1.5-6.5L2 9h7z"/></svg></div><h3>Showcase</h3><p>Assemble a publicly verifiable GitHub portfolio and deployed live URLs to demonstrate engineering capability to recruiters.</p></div>
+    </div>
+    <div class="flow-bar">
+      <div class="flow-left">
+        <svg class="fl-icon" width="23" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        <div><h4>Ready to start your journey?</h4><p>Join the next cohort and start building real projects from week one.</p></div>
+      </div>
+      <a href="#contact" class="btn btn-ghost">Talk to an Advisor
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TECH STACK -->
+<section class="section" style="background:#fff;">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">TECH ECOSYSTEM</span>
+      <h2>Technologies You'll Work With</h2>
+      <p>Modern, battle-tested toolsets leveraged in our client solutions and thoroughly taught across our student training tracks.</p>
+    </div>
+    <div class="chips">
+      <div class="chip"><svg class="ci" width="17" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Python</div>
+      <div class="chip"><svg class="ci" width="9" height="5" viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 2 22 6 16 10"/><polyline points="8 2 2 6 8 10"/></svg>JavaScript</div>
+      <div class="chip"><svg class="ci" width="17" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M8 16h4"/></svg>TypeScript</div>
+      <div class="chip"><svg class="ci" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/></svg>React</div>
+      <div class="chip"><svg class="ci" width="15" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l9 5v10l-9 5-9-5V7l9-5z"/></svg>Next.js</div>
+      <div class="chip"><svg class="ci" width="15" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l9 5v10l-9 5-9-5V7l9-5z"/><path d="M9 9l6 6M15 9l-6 6"/></svg>Node.js</div>
+      <div class="chip"><svg class="ci" width="20" height="5" viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/></svg>HTML5 &amp; CSS3</div>
+      <div class="chip"><svg class="ci" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19a4.5 4.5 0 100-9 6 6 0 00-11.3-2A5 5 0 006 18h11.5z"/></svg>Tailwind CSS</div>
+      <div class="chip"><svg class="ci" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>PostgreSQL &amp; SQL</div>
+      <div class="chip"><svg class="ci" width="12" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><path d="M6 6v6a4 4 0 004 4h4"/><circle cx="6" cy="6" r="2"/></svg>Git &amp; GitHub</div>
+      <div class="chip"><svg class="ci" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>REST APIs</div>
+      <div class="chip"><svg class="ci" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>Docker</div>
+      <div class="chip"><svg class="ci" width="18" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg>AWS Cloud</div>
+      <div class="chip"><svg class="ci" width="16" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2 2M17 17l2 2M4.9 19.1l2-2M17 7l2-2"/></svg>AI Assisted Tooling</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY PMP -->
+<section class="section" style="background:#fff;">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">OUR DISTINCTION</span>
+      <h2>Why Work With PMP Technologies?</h2>
+      <p>We combine the disciplined execution of a modern development agency with the pedagogical precision of a technical academy.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card"><svg class="wi" width="26" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4.5L18 20l-6-4-6 4 1.5-6.5L2 9h7z"/></svg><h3>Practical Approach</h3><p>No fluff or unnecessary complexity. We write clean, testable code and prioritize features that deliver immediate real-world value.</p></div>
+      <div class="why-card"><svg class="wi" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2v6h6M8 13h8M8 17h5"/><path d="M6 2h9l5 5v15H6z"/></svg><h3>Customized Solutions</h3><p>We adapt specifically to your existing infrastructure, technical requirements, timeline, and business budget constraints.</p></div>
+      <div class="why-card"><svg class="wi" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg><h3>Hands-On Learning</h3><p>Students learn through practical implementation, building functional software artifacts instead of passively watching pre-recorded videos.</p></div>
+      <div class="why-card"><svg class="wi" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg><h3>Modern Technologies</h3><p>We continuously upgrade our stack to include contemporary standards like Next.js, TypeScript, cloud microservices, and AI utilities.</p></div>
+      <div class="why-card"><svg class="wi" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><h3>Clear Communication</h3><p>Transparent weekly progress reports, accessible repositories, and direct channels ensure zero guesswork for clients and learners alike.</p></div>
+      <div class="why-card"><svg class="wi" width="24" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg><h3>Long-Term Growth</h3><p>We support client software well beyond the initial launch and provide ongoing mentorship guidance to our academy alumni.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECT SHOWCASE (client products) -->
+<section class="section" id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">PORTFOLIO</span>
+      <h2>Built With Purpose</h2>
+      <p>Take a look at recent client software platforms engineered for resilience, speed, and real operational outcomes.</p>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card">
+        <div class="proj-thumb"><div class="dots"><i></i><i></i><i></i></div><div class="bar"></div><div class="block"></div></div>
+        <div class="proj-body">
+          <div class="proj-tag">LOGISTICS &amp; SUPPLY CHAIN</div>
+          <h3>FleetTrack Operations Portal</h3>
+          <p>Real-time dispatch and driver coordination platform featuring automated billing and live GPS map visualizations.</p>
+          <div class="proj-foot"><span class="proj-stack">React • Node.js • Maps API</span><span class="proj-link">View <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M7 17L17 7M7 7h10v10"/></svg></span></div>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-thumb"><div class="dots"><i></i><i></i><i></i></div><div style="display:flex;gap:8px;height:40px;"><div class="block" style="flex:1;height:40px;"></div><div class="block" style="flex:1;height:40px;"></div><div class="block" style="flex:1;height:40px;"></div></div><div class="block" style="height:32px;"></div></div>
+        <div class="proj-body">
+          <div class="proj-tag">HEALTHTECH ENTERPRISE</div>
+          <h3>MedPulse Clinic Management</h3>
+          <p>HIPAA-compliant patient scheduling, electronic medical records sync, and automated SMS reminder framework.</p>
+          <div class="proj-foot"><span class="proj-stack">Next.js • PostgreSQL • Twilio</span><span class="proj-link">View <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M7 17L17 7M7 7h10v10"/></svg></span></div>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-thumb"><div class="dots"><i></i><i></i><i></i></div><div class="bar" style="height:24px;"></div><div class="block" style="height:56px;"></div></div>
+        <div class="proj-body">
+          <div class="proj-tag">FINTECH B2B</div>
+          <h3>ApexLedger Analytics</h3>
+          <p>Multi-currency invoice reconciliation application with custom export formatting and bank webhook listener logic.</p>
+          <div class="proj-foot"><span class="proj-stack">Python • FastAPI • Banking APIs</span><span class="proj-link">View <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M7 17L17 7M7 7h10v10"/></svg></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STUDENT PROJECT SHOWCASE -->
+<section class="section" style="background:#fff;">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">STUDENT OUTCOMES</span>
+      <h2>What Students Build</h2>
+      <p>Explore actual project blueprints completed by our academy students to validate technical competence.</p>
+    </div>
+    <div class="stu-grid">
+      <div class="stu-card"><div class="stu-tag">E-COMMERCE</div><h3>E-Commerce Application</h3><p>Full product catalog with dynamic filtering, live shopping cart state, Stripe test checkout, and admin inventory controls.</p><div class="stu-stack">Next.js • Tailwind • Stripe</div></div>
+      <div class="stu-card"><div class="stu-tag">PRODUCTIVITY</div><h3>Task Management App</h3><p>Drag-and-drop Kanban board with real-time WebSocket syncing, user authentication, and activity log tracking.</p><div class="stu-stack">React • Node.js • WebSockets</div></div>
+      <div class="stu-card"><div class="stu-tag">PORTFOLIO</div><h3>Developer Portfolio</h3><p>Fully responsive, high-performance portfolio featuring theme customization, live GitHub commit feeds, and contact form handling.</p><div class="stu-stack">HTML5 • Modern JS • GitHub API</div></div>
+      <div class="stu-card"><div class="stu-tag">DATA</div><h3>Analytics Dashboard</h3><p>Data visualization platform consuming public REST APIs with interactive chart libraries, search caching, and data exports.</p><div class="stu-stack">Python • Chart.js • REST API</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-left">
+        <span class="eyebrow">START CONVERSATION</span>
+        <h2>Have an Idea? Let's Talk.</h2>
+        <p>Whether you need a full-scale web product, custom business application, or want to discuss student training options, we are ready to guide you.</p>
+        <ul class="contact-points">
+          <li><svg class="check" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--blue-dark)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>Discuss specific scope &amp; requirements</li>
+          <li><svg class="check" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--blue-dark)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>Understand our technical stack recommendations</li>
+          <li><svg class="check" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--blue-dark)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>Receive a straightforward proposal with milestones</li>
+        </ul>
+        <div class="contact-info">
+          <div class="ci-row">
+            <div class="ci-badge"><svg width="17" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7L22 6"/></svg></div>
+            <div><div class="ci-label">EMAIL DIRECTLY</div><div class="ci-value">pmptechnologiesandnetworks@gmail.com</div></div>
+          </div>
+          <div class="ci-row">
+            <div class="ci-badge"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+            <div><div class="ci-label">CALL OR WHATSAPP</div><div class="ci-value">+91 8524832555</div></div>
+          </div>
+          <div class="ci-row">
+            <div class="ci-badge"><svg width="13" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><div class="ci-label">STUDIO LOCATION</div><div class="ci-value">Thiruvavaduthurai,mayiladuthurai</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-card">
+        <form id="leadForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fullName">Full Name *</label>
+              <input type="text" id="fullName" name="name" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+              <label for="emailAddr">Email Address *</label>
+              <input type="email" id="emailAddr" name="email" placeholder="john@company.com" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phoneNum">Phone Number *</label>
+              <input type="tel" id="phoneNum" name="phone" placeholder="+1 (555) 000-0000" required>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit" id="submitBtn">Let's Discuss
+            <svg width="16" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          </button>
+          <p class="form-note">We respond within 24 business hours. No spam, ever.</p>
+          <div id="form-status"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FREE AUDIT / CONSULTATION BANNER -->
+<section class="section" style="padding-top:0;">
+  <div class="wrap">
+    <div class="consult-banner">
+      <div>
+        <h3>Not Sure Where to Start?</h3>
+        <p>Talk to us about your idea, requirements, or learning goals. We'll help you understand the recommended next steps without any commitment.</p>
+      </div>
+      <div class="consult-ctas">
+        <a href="https://payments.cashfree.com/forms/getaudit" target="_blank" rel="noopener" class="btn btn-primary">Free Audit for ₹1
+          <svg width="16" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#contact" class="btn btn-ghost">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section" id="reviews" style="background:#fff;">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">SOCIAL PROOF</span>
+      <h2>What Our Clients &amp; Students Say</h2>
+      <p>Feedback from startup founders, business owners, and graduates who have worked with PMP Technologies.</p>
+    </div>
+    <div class="review-grid">
+      <div class="review-card">
+        <div class="review-top"><span class="review-tag">Client</span><span class="stars">★★★★★</span></div>
+        <p class="review-quote">"PMP Technologies transformed our outdated portal into a lightning-fast React web app. Clear sprint updates and zero surprise expenses throughout."</p>
+        <div class="review-person"><div class="review-avatar">RK</div><div><div class="review-name">Rohan Kapoor</div><div class="review-role">Founder, RetailBridge</div></div></div>
+      </div>
+      <div class="review-card">
+        <div class="review-top"><span class="review-tag student">Student</span><span class="stars">★★★★★</span></div>
+        <p class="review-quote">"The project-based training bridged the exact gap college left open. I went from tutorial hell to actually shipping a deployed full-stack application that landed me interviews."</p>
+        <div class="review-person"><div class="review-avatar">AS</div><div><div class="review-name">Ananya Sharma</div><div class="review-role">Full Stack Trainee, Batch 2025</div></div></div>
+      </div>
+      <div class="review-card">
+        <div class="review-top"><span class="review-tag">Client</span><span class="stars">★★★★★</span></div>
+        <p class="review-quote">"Reliable, honest, and technically sound. They helped us spec out an MVP that fit our startup's timeline and budget perfectly."</p>
+        <div class="review-person"><div class="review-avatar">MJ</div><div><div class="review-name">Meera Joshi</div><div class="review-role">Co-founder, LaunchDock</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section faq" id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">ANSWERS</span>
+      <h2>Frequently Asked Questions</h2>
+      <p>Clear answers regarding client product development and our practical student training programs.</p>
+    </div>
+    <div class="faq-columns">
+      <div class="faq-col">
+        <h3><svg class="fi" width="20" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 8h20"/></svg>Client &amp; Software Development</h3>
+        <div class="faq-item">
+          <button class="faq-q">What type of websites and software do you build?<svg class="chev" width="10" height="6" viewBox="0 0 24 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 2l10 10 10-10"/></svg></button>
+          <div class="faq-a"><div class="faq-a-inner">We build everything from marketing websites and e-commerce storefronts to complex custom software, internal tools, and cloud-native web applications — tailored to your business requirements.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can you build a custom application for my business?<svg class="chev" width="10" height="6" viewBox="0 0 24 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 2l10 10 10-10"/></svg></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes. We specialize in bespoke software engineered around your specific operations, whether that's a CRM pipeline, internal tooling, or a proprietary workflow engine.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can I discuss my project before committing?<svg class="chev" width="10" height="6" viewBox="0 0 24 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 2l10 10 10-10"/></svg></button>
+          <div class="faq-a"><div class="faq-a-inner">Absolutely — book a free, no-commitment discussion using the contact form or the "Free Audit" option, and we'll walk through scope, feasibility, and next steps together.</div></div>
+        </div>
+      </div>
+      <div class="faq-col">
+        <h3><svg class="fi" width="22" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Student Training &amp; Academy</h3>
+        <div class="faq-item">
+          <button class="faq-q">Who can join the training programs?<svg class="chev" width="10" height="6" viewBox="0 0 24 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 2l10 10 10-10"/></svg></button>
+          <div class="faq-a"><div class="faq-a-inner">Our programs welcome both complete beginners and developers looking to level up, as long as you're ready to commit to hands-on, project-based learning.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do students work on real practical projects?<svg class="chev" width="10" height="6" viewBox="0 0 24 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 2l10 10 10-10"/></svg></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes — every cohort builds deployable, full-stack applications with real authentication, databases, and third-party API integrations, not toy exercises.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Is there career and portfolio guidance?<svg class="chev" width="10" height="6" viewBox="0 0 24 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 2l10 10 10-10"/></svg></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes — we help you assemble a public GitHub portfolio, deploy live project URLs, and prepare for technical interviews with recruiter-ready presentation.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="section">
+  <div class="wrap">
+    <div class="final-cta-box">
+      <span class="eyebrow">TAKE THE NEXT STEP</span>
+      <h2>Ready to Build Something That Matters?</h2>
+      <p>Whether you're developing a business product or launching your personal technology career, start with the right conversation today.</p>
+      <div class="final-ctas">
+        <a href="#contact" class="btn btn-primary">Start a Project
+          <svg width="16" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#academy" class="btn btn-secondary">Explore Training
+          <svg width="17" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <img src="logo1.jpeg" alt="nature"
+    height="40px" width ="40px"/>
+          <span class="brand-name" style="color:#edf0ff;">PMP Technologies</span>
+        </div>
+        <p>Building digital products for businesses and practical technology skills for the next generation of developers.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul><li>About</li><li>Projects</li><li>Services</li><li>Contact</li></ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul><li>Website Development</li><li>App Development</li><li>Web Applications</li><li>Custom Software</li></ul>
+      </div>
+      <div class="footer-col">
+        <h4>Training</h4>
+        <ul><li>Full Stack Development</li><li>Programming</li><li>Project Training</li><li>Student Programs</li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 PMP Technologies. All rights reserved.</span>
+      <div class="legal"><a href="#">Privacy Policy</a><a href="#">Terms &amp; Conditions</a></div>
+      <div class="footer-social">
+        <a href="#" aria-label="LinkedIn"><svg width="20" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.7A1.7 1.7 0 118.2 7a1.7 1.7 0 01-1.7 1.7zM19 19h-3v-4.7c0-1.1 0-2.6-1.6-2.6s-1.8 1.2-1.8 2.5V19h-3v-9h2.9v1.3a3.1 3.1 0 012.8-1.5c3 0 3.5 2 3.5 4.5z"/></svg></a>
+        <a href="#" aria-label="Twitter"><svg width="17" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14.86 4.48 4.48 0 001.98-2.48 9 9 0 01-2.83 1.1 4.48 4.48 0 00-7.63 4.09A12.7 12.7 0 013 2.9a4.48 4.48 0 001.4 6 4.4 4.4 0 01-2-.56v.06a4.48 4.48 0 003.6 4.4 4.5 4.5 0 01-2 .08 4.48 4.48 0 004.18 3.1A9 9 0 012 18.4a12.7 12.7 0 006.9 2c8.3 0 12.8-6.9 12.8-12.8v-.6A9.2 9.2 0 0023 3z"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg width="17" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.5-.45-5.2a3 3 0 00-2.1-2.1C18.7 4.2 12 4.2 12 4.2s-6.7 0-8.45.5a3 3 0 00-2.1 2.1C1 8.5 1 12 1 12s0 3.5.45 5.2a3 3 0 002.1 2.1c1.75.5 8.45.5 8.45.5s6.7 0 8.45-.5a3 3 0 002.1-2.1C23 15.5 23 12 23 12zM9.75 15.5v-7l6 3.5z"/></svg></a>
+        <a href="#" aria-label="GitHub"><svg width="17" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.1.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.53 9.53 0 015 0c1.9-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.69 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0012 2z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  document.getElementById('navToggle').addEventListener('click', function(){
+    var nav = document.querySelector('nav.main-nav');
+    nav.style.display = (nav.style.display === 'flex') ? 'none' : 'flex';
+    if(nav.style.display === 'flex'){
+      nav.style.position='absolute';
+      nav.style.top='80px';
+      nav.style.left='0';
+      nav.style.right='0';
+      nav.style.background='#fff';
+      nav.style.flexDirection='column';
+      nav.style.padding='16px 20px';
+      nav.style.boxShadow='0 4px 6px rgba(0,0,0,.08)';
+    }
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    item.querySelector('.faq-q').addEventListener('click', function(){
+      item.classList.toggle('open');
+    });
+  });
+
+  // Contact form submission -> Google Apps Script
+  var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxSxNyHqO32FOZzk3pcV-2dZHEc6l0bAsBlvh5cBdANlFZvuRs8hwrcL1cUZmnakA-Y/exec";
+
+  document.getElementById('leadForm').addEventListener('submit', function(e){
+    e.preventDefault();
+
+    var name = document.getElementById('fullName').value.trim();
+    var email = document.getElementById('emailAddr').value.trim();
+    var phone = document.getElementById('phoneNum').value.trim();
+    var statusEl = document.getElementById('form-status');
+    var submitBtn = document.getElementById('submitBtn');
+
+    if(!name || !email || !phone){
+      statusEl.textContent = "Please fill in all required fields.";
+      statusEl.className = "error";
+      return;
+    }
+
+    submitBtn.disabled = true;
+    statusEl.textContent = "Sending...";
+    statusEl.className = "";
+
+    var params = new URLSearchParams({ name: name, email: email, phone: phone });
+    var url = SCRIPT_URL + "?" + params;
+
+    fetch(url, { method: "GET", mode: "no-cors" })
+      .then(function(){ showSuccess(); })
+      .catch(function(){ showError(); });
+
+    function showSuccess(){
+      statusEl.textContent = "Thanks! We've received your details and will be in touch within 24 business hours.";
+      statusEl.className = "success";
+      submitBtn.disabled = false;
+      document.getElementById('leadForm').reset();
+    }
+    function showError(){
+      statusEl.textContent = "Something went wrong. Please try again or email us directly.";
+      statusEl.className = "error";
+      submitBtn.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>
